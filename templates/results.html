@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Analysis Complete - AI Data Science Platform</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+            background-attachment: fixed;
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            box-shadow: 0 30px 90px rgba(0,0,0,0.4);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+        }
+        
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1e3c72 0%, #2a5298 50%, #7e22ce 100%);
+            color: white;
+            padding: 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            font-weight: 800;
+        }
+        
+        .btn-home {
+            padding: 12px 30px;
+            background: white;
+            color: #1e3c72;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 4px 15px rgba(255,255,255,0.3);
+        }
+        
+        .btn-home:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(255,255,255,0.4);
+        }
+        
+        .content {
+            padding: 50px;
+        }
+        
+        .success-banner {
+            background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 30px rgba(16, 185, 129, 0.3);
+        }
+        
+        .success-banner h2 {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+            font-weight: 800;
+        }
+        
+        .success-banner p {
+            font-size: 1.2em;
+            opacity: 0.95;
+        }
+        
+        .download-section {
+            background: linear-gradient(135deg, #f8f9ff 0%, #f0f4ff 100%);
+            border-radius: 20px;
+            padding: 40px;
+            margin-bottom: 40px;
+            border: 2px solid rgba(42, 82, 152, 0.1);
+        }
+        
+        .download-section h3 {
+            color: #1e3c72;
+            margin-bottom: 25px;
+            font-size: 1.8em;
+            font-weight: 700;
+        }
+        
+        .btn-download {
+            display: inline-block;
+            padding: 18px 40px;
+            background: linear-gradient(135deg, #2a5298 0%, #7e22ce 100%);
+            color: white;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1em;
+            margin: 10px;
+            transition: all 0.3s;
+            box-shadow: 0 6px 20px rgba(42, 82, 152, 0.3);
+        }
+        
+        .btn-download:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(126, 34, 206, 0.4);
+        }
+        
+        .visualizations-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .viz-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            transition: all 0.3s;
+            border: 1px solid rgba(42, 82, 152, 0.1);
+        }
+        
+        .viz-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(42, 82, 152, 0.2);
+        }
+        
+        .viz-card img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        .viz-card-footer {
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        
+        .viz-card-footer h4 {
+            color: #1e3c72;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .btn-view {
+            display: inline-block;
+            padding: 10px 20px;
+            background: #2a5298;
+            color: white;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 0.9em;
+            font-weight: 600;
+            transition: all 0.3s;
+            margin-right: 10px;
+        }
+        
+        .btn-view:hover {
+            background: #7e22ce;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            margin-bottom: 40px;
+        }
+        
+        .info-card {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9ff 100%);
+            padding: 30px;
+            border-radius: 15px;
+            border: 1px solid rgba(42, 82, 152, 0.1);
+            transition: all 0.3s;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(42, 82, 152, 0.15);
+        }
+        
+        .info-card-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        
+        .info-card-title {
+            font-size: 0.9em;
+            color: #666;
+            margin-bottom: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        .info-card-value {
+            font-size: 1.8em;
+            color: #1e3c72;
+            font-weight: 700;
+        }
+        
+        @media (max-width: 768px) {
+            .header {
+                flex-direction: column;
+                gap: 20px;
+            }
+            
+            .content {
+                padding: 30px 20px;
+            }
+            
+            .visualizations-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>✅ Analysis Complete!</h1>
+            <a href="/" class="btn-home">🏠 New Analysis</a>
+        </div>
+        
+        <div class="content">
+            <div class="success-banner">
+                <h2>🎉 Your ML Analysis is Ready!</h2>
+                <p>Complete data science pipeline executed successfully</p>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card">
+                    <div class="info-card-icon">📊</div>
+                    <div class="info-card-title">Status</div>
+                    <div class="info-card-value">Completed</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-icon">🤖</div>
+                    <div class="info-card-title">Best Model</div>
+                    <div class="info-card-value" id="bestModel">Loading...</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-icon">🎯</div>
+                    <div class="info-card-title">Model Accuracy</div>
+                    <div class="info-card-value" id="modelAccuracy">Loading...</div>
+                </div>
+                <div class="info-card">
+                    <div class="info-card-icon">📈</div>
+                    <div class="info-card-title">Visualizations</div>
+                    <div class="info-card-value">9+</div>
+                </div>
+            </div>
+            
+            <div class="download-section">
+                <h3>📥 Download Your Results</h3>
+                <a href="/download/report/{{ job_id }}" class="btn-download">
+                    📄 Download PDF Report
+                </a>
+                <p style="margin-top: 20px; color: #666;">
+                    <strong>Report includes:</strong> Executive summary, data overview, cleaning report, 
+                    feature engineering details, model performance metrics, visualizations, and recommendations.
+                </p>
+            </div>
+            
+            <div class="download-section">
+                <h3>🖼️ Visualizations Gallery</h3>
+                <p style="margin-bottom: 20px; color: #666;">
+                    Click on any visualization to view in full size or download
+                </p>
+                
+                <div class="visualizations-grid" id="vizGrid">
+                    <!-- Visualizations will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        const jobId = "{{ job_id }}";
+        
+        // Fetch and display visualizations
+        async function loadVisualizations() {
+            try {
+                const response = await fetch(`/status/${jobId}`);
+                const data = await response.json();
+                
+                // Update model info
+                if (data.best_model) {
+                    document.getElementById('bestModel').textContent = data.best_model;
+                }
+                
+                if (data.best_score !== undefined) {
+                    const scorePercent = (data.best_score * 100).toFixed(2);
+                    document.getElementById('modelAccuracy').textContent = scorePercent + '%';
+                    
+                    // Change color based on accuracy
+                    const accuracyElement = document.getElementById('modelAccuracy');
+                    if (data.best_score >= 0.9) {
+                        accuracyElement.style.color = '#10b981'; // Green
+                    } else if (data.best_score >= 0.7) {
+                        accuracyElement.style.color = '#f59e0b'; // Orange
+                    } else {
+                        accuracyElement.style.color = '#ef4444'; // Red
+                    }
+                }
+                
+                if (data.visualizations && data.visualizations.length > 0) {
+                    const vizGrid = document.getElementById('vizGrid');
+                    
+                    data.visualizations.forEach(viz => {
+                        const card = document.createElement('div');
+                        card.className = 'viz-card';
+                        
+                        const vizName = viz.replace(/^\d+_/, '').replace('.png', '').replace(/_/g, ' ');
+                        const vizTitle = vizName.charAt(0).toUpperCase() + vizName.slice(1);
+                        
+                        card.innerHTML = `
+                            <img src="/view/viz/${jobId}/${viz}" alt="${vizTitle}">
+                            <div class="viz-card-footer">
+                                <h4>${vizTitle}</h4>
+                                <a href="/view/viz/${jobId}/${viz}" target="_blank" class="btn-view">👁️ View</a>
+                                <a href="/download/viz/${jobId}/${viz}" class="btn-view">⬇️ Download</a>
+                            </div>
+                        `;
+                        
+                        vizGrid.appendChild(card);
+                    });
+                } else {
+                    document.getElementById('vizGrid').innerHTML = 
+                        '<p style="text-align: center; color: #666;">No visualizations available</p>';
+                }
+            } catch (error) {
+                console.error('Error loading visualizations:', error);
+                document.getElementById('vizGrid').innerHTML = 
+                    '<p style="text-align: center; color: #c33;">Error loading visualizations</p>';
+            }
+        }
+        
+        // Load visualizations on page load
+        loadVisualizations();
+    </script>
+</body>
+</html>
