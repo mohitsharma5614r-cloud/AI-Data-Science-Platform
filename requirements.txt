@@ -17,6 +17,7 @@ reportlab>=3.6.0
 
 # Web Interface
 Flask>=2.3.0
+gunicorn>=21.0.0  # Production WSGI server
 
 # Additional utilities
 openpyxl>=3.0.0  # For Excel file support

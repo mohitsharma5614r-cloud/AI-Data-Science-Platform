@@ -29,5 +29,5 @@ EXPOSE 5000
 ENV FLASK_APP=web_app.py
 ENV PYTHONUNBUFFERED=1
 
-# Run the application
-CMD ["python", "web_app.py"]
+# Run the application with Gunicorn (production) or Python (development)
+CMD ["gunicorn", "-w", "4", "-b", "0.0.0.0:5000", "--timeout", "300", "web_app:app"]
