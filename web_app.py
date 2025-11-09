@@ -15,9 +15,9 @@ import uuid
 from main import AutonomousDataScienceAgent
 
 app = Flask(__name__)
-app.config['UPLOAD_FOLDER'] = 'uploads'
-app.config['MAX_CONTENT_LENGTH'] = 50 * 1024 * 1024  # 50MB max file size
-app.config['SECRET_KEY'] = 'your-secret-key-here'
+app.config['UPLOAD_FOLDER'] = os.environ.get('UPLOAD_FOLDER', 'uploads')
+app.config['MAX_CONTENT_LENGTH'] = int(os.environ.get('MAX_UPLOAD_SIZE', 50)) * 1024 * 1024
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'your-secret-key-change-in-production')
 
 # Create upload folder
 Path(app.config['UPLOAD_FOLDER']).mkdir(exist_ok=True)
@@ -236,8 +236,13 @@ if __name__ == '__main__':
     print("Autonomous Data Science Agent - Web Interface")
     print("="*60)
     print("\nStarting web server...")
-    print("Open your browser and go to: http://localhost:5000")
+    
+    # Get port from environment variable (for cloud deployment)
+    port = int(os.environ.get('PORT', 5000))
+    debug = os.environ.get('FLASK_ENV', 'development') == 'development'
+    
+    print(f"Open your browser and go to: http://localhost:{port}")
     print("\nPress Ctrl+C to stop the server")
     print("="*60 + "\n")
     
-    app.run(debug=True, host='0.0.0.0', port=5000)
+    app.run(debug=debug, host='0.0.0.0', port=port)

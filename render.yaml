@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: autonomous-ds-agent
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: python web_app.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.10.0
+      - key: FLASK_APP
+        value: web_app.py
+    healthCheckPath: /
+    autoDeploy: true
